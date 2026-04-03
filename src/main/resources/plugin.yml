@@ -1,0 +1,16 @@
+name: SElevators
+version: ${project.version}
+main: net.enelson.sopli.elevators.SElevatorsPlugin
+api-version: '1.21'
+author: E_NeLsOn
+softdepend: [ACustomBlocks]
+description: Elevator plugin with optional ACustomBlocks support.
+commands:
+  selevators:
+    description: Main command for SElevators.
+    usage: /<command> reload
+    permission: selevators.admin
+permissions:
+  selevators.admin:
+    description: Allows reloading SElevators configuration.
+    default: op
