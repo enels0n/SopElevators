@@ -1,4 +1,4 @@
-package net.enelson.sopli.elevators.config;
+package net.enelson.sopelevators.config;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;

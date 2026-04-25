@@ -1,17 +1,17 @@
-package net.enelson.sopli.elevators.listener;
+package net.enelson.sopelevators.listener;
 
 import com.destroystokyo.paper.event.player.PlayerJumpEvent;
-import net.enelson.sopli.elevators.SElevatorsPlugin;
-import net.enelson.sopli.elevators.service.ElevatorService;
+import net.enelson.sopelevators.SopElevatorsPlugin;
+import net.enelson.sopelevators.service.ElevatorService;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 
 public final class ElevatorListener implements Listener {
-    private final SElevatorsPlugin plugin;
+    private final SopElevatorsPlugin plugin;
 
-    public ElevatorListener(SElevatorsPlugin plugin) {
+    public ElevatorListener(SopElevatorsPlugin plugin) {
         this.plugin = plugin;
     }
 

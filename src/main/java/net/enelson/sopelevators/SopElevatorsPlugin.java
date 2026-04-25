@@ -1,15 +1,15 @@
-package net.enelson.sopli.elevators;
+package net.enelson.sopelevators;
 
-import net.enelson.sopli.elevators.command.SElevatorsCommand;
-import net.enelson.sopli.elevators.config.ElevatorSettings;
-import net.enelson.sopli.elevators.hook.ACustomBlocksHook;
-import net.enelson.sopli.elevators.listener.ElevatorListener;
-import net.enelson.sopli.elevators.service.ElevatorService;
+import net.enelson.sopelevators.command.SopElevatorsCommand;
+import net.enelson.sopelevators.config.ElevatorSettings;
+import net.enelson.sopelevators.hook.ACustomBlocksHook;
+import net.enelson.sopelevators.listener.ElevatorListener;
+import net.enelson.sopelevators.service.ElevatorService;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class SElevatorsPlugin extends JavaPlugin {
+public final class SopElevatorsPlugin extends JavaPlugin {
     private ElevatorSettings settings;
     private ACustomBlocksHook customBlocksHook;
     private ElevatorService elevatorService;
@@ -24,7 +24,7 @@ public final class SElevatorsPlugin extends JavaPlugin {
 
         PluginManager pluginManager = Bukkit.getPluginManager();
         pluginManager.registerEvents(new ElevatorListener(this), this);
-        getCommand("selevators").setExecutor(new SElevatorsCommand(this));
+        getCommand("sopelevators").setExecutor(new SopElevatorsCommand(this));
     }
 
     public void reloadPlugin() {

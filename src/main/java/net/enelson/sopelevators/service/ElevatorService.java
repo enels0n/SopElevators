@@ -1,12 +1,12 @@
-package net.enelson.sopli.elevators.service;
+package net.enelson.sopelevators.service;
 
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
-import net.enelson.sopli.elevators.SElevatorsPlugin;
-import net.enelson.sopli.elevators.config.ElevatorSettings;
-import net.enelson.sopli.elevators.config.ElevatorType;
-import net.enelson.sopli.elevators.hook.ACustomBlocksHook;
+import net.enelson.sopelevators.SopElevatorsPlugin;
+import net.enelson.sopelevators.config.ElevatorSettings;
+import net.enelson.sopelevators.config.ElevatorType;
+import net.enelson.sopelevators.hook.ACustomBlocksHook;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
@@ -14,12 +14,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
 public final class ElevatorService {
-    private final SElevatorsPlugin plugin;
+    private final SopElevatorsPlugin plugin;
     private final ElevatorSettings settings;
     private final ACustomBlocksHook customBlocksHook;
     private final Map<UUID, Long> cooldowns = new ConcurrentHashMap<>();
 
-    public ElevatorService(SElevatorsPlugin plugin, ElevatorSettings settings, ACustomBlocksHook customBlocksHook) {
+    public ElevatorService(SopElevatorsPlugin plugin, ElevatorSettings settings, ACustomBlocksHook customBlocksHook) {
         this.plugin = plugin;
         this.settings = settings;
         this.customBlocksHook = customBlocksHook;

@@ -1,16 +1,16 @@
-name: SElevators
+name: SopElevators
 version: ${project.version}
-main: net.enelson.sopli.elevators.SElevatorsPlugin
+main: net.enelson.sopelevators.SopElevatorsPlugin
 api-version: '1.21'
 author: E_NeLsOn
 softdepend: [ACustomBlocks]
 description: Elevator plugin with optional ACustomBlocks support.
 commands:
-  selevators:
-    description: Main command for SElevators.
+  sopelevators:
+    description: Main command for SopElevators.
     usage: /<command> reload
-    permission: selevators.admin
+    permission: sopelevators.admin
 permissions:
-  selevators.admin:
-    description: Allows reloading SElevators configuration.
+  sopelevators.admin:
+    description: Allows reloading SopElevators configuration.
     default: op

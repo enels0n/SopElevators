@@ -1,4 +1,4 @@
-package net.enelson.sopli.elevators.hook;
+package net.enelson.sopelevators.hook;
 
 import java.util.Locale;
 import java.util.Set;

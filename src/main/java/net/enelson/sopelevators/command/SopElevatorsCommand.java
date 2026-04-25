@@ -1,28 +1,28 @@
-package net.enelson.sopli.elevators.command;
+package net.enelson.sopelevators.command;
 
-import net.enelson.sopli.elevators.SElevatorsPlugin;
+import net.enelson.sopelevators.SopElevatorsPlugin;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-public final class SElevatorsCommand implements CommandExecutor {
-    private final SElevatorsPlugin plugin;
+public final class SopElevatorsCommand implements CommandExecutor {
+    private final SopElevatorsPlugin plugin;
 
-    public SElevatorsCommand(SElevatorsPlugin plugin) {
+    public SopElevatorsCommand(SopElevatorsPlugin plugin) {
         this.plugin = plugin;
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 1 && args[0].equalsIgnoreCase("reload")) {
-            if (!sender.hasPermission("selevators.admin")) {
+            if (!sender.hasPermission("sopelevators.admin")) {
                 sender.sendMessage(ChatColor.RED + "You do not have permission to use this command.");
                 return true;
             }
 
             plugin.reloadPlugin();
-            sender.sendMessage(ChatColor.GREEN + "SElevators configuration reloaded.");
+            sender.sendMessage(ChatColor.GREEN + "SopElevators configuration reloaded.");
             return true;
         }
 
