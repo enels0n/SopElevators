@@ -1,2 +1,2 @@
 # SElevators
-Elevator plugin with optional ACustomBlocks support.
+Elevator plugin with optional SopCustomBlocks support.
