@@ -7,8 +7,8 @@ elevators:
   default:
     material: DAYLIGHT_DETECTOR
     search-range: 16
-    acustomblocks-ids: []
+    custom-block-ids: []
   fast:
     material: LIGHT_WEIGHTED_PRESSURE_PLATE
     search-range: 32
-    acustomblocks-ids: []
+    custom-block-ids: []

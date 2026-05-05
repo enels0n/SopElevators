@@ -6,7 +6,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import net.enelson.sopelevators.SopElevatorsPlugin;
 import net.enelson.sopelevators.config.ElevatorSettings;
 import net.enelson.sopelevators.config.ElevatorType;
-import net.enelson.sopelevators.hook.ACustomBlocksHook;
+import net.enelson.sopelevators.hook.SopCustomBlocksHook;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
@@ -16,10 +16,10 @@ import org.bukkit.util.Vector;
 public final class ElevatorService {
     private final SopElevatorsPlugin plugin;
     private final ElevatorSettings settings;
-    private final ACustomBlocksHook customBlocksHook;
+    private final SopCustomBlocksHook customBlocksHook;
     private final Map<UUID, Long> cooldowns = new ConcurrentHashMap<>();
 
-    public ElevatorService(SopElevatorsPlugin plugin, ElevatorSettings settings, ACustomBlocksHook customBlocksHook) {
+    public ElevatorService(SopElevatorsPlugin plugin, ElevatorSettings settings, SopCustomBlocksHook customBlocksHook) {
         this.plugin = plugin;
         this.settings = settings;
         this.customBlocksHook = customBlocksHook;
@@ -71,7 +71,7 @@ public final class ElevatorService {
     }
 
     private Block findDestination(Block origin, ElevatorType elevatorType, int direction) {
-        for (int offset = direction; Math.abs(offset) <= elevatorType.searchRange(); offset += direction) {
+        for (int offset = direction; Math.abs(offset) <= elevatorType.getSearchRange(); offset += direction) {
             Block candidate = origin.getWorld().getBlockAt(origin.getX(), origin.getY() + offset, origin.getZ());
             if (matchesElevatorType(candidate, elevatorType) && isSafeDestination(candidate)) {
                 return candidate;
@@ -90,7 +90,7 @@ public final class ElevatorService {
             return null;
         }
 
-        for (ElevatorType elevatorType : settings.elevatorTypes()) {
+        for (ElevatorType elevatorType : settings.getElevatorTypes()) {
             if (matchesElevatorType(block, elevatorType)) {
                 return elevatorType;
             }
@@ -104,13 +104,13 @@ public final class ElevatorService {
             return false;
         }
 
-        if (elevatorType.material() != null && block.getType() == elevatorType.material()) {
+        if (elevatorType.getMaterial() != null && block.getType() == elevatorType.getMaterial()) {
             return true;
         }
 
         return customBlocksHook.isAvailable()
-                && !elevatorType.allowedCustomBlockIds().isEmpty()
-                && customBlocksHook.isElevatorBlock(block, elevatorType.allowedCustomBlockIds());
+                && !elevatorType.getAllowedCustomBlockIds().isEmpty()
+                && customBlocksHook.isElevatorBlock(block, elevatorType.getAllowedCustomBlockIds());
     }
 
     private Block getStandingBlock(Location location) {
@@ -119,6 +119,6 @@ public final class ElevatorService {
 
     private boolean isOnCooldown(Player player) {
         long lastUse = cooldowns.getOrDefault(player.getUniqueId(), 0L);
-        return System.currentTimeMillis() - lastUse < settings.cooldownMillis();
+        return System.currentTimeMillis() - lastUse < settings.getCooldownMillis();
     }
 }

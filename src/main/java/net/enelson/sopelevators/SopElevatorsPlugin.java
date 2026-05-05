@@ -2,7 +2,7 @@ package net.enelson.sopelevators;
 
 import net.enelson.sopelevators.command.SopElevatorsCommand;
 import net.enelson.sopelevators.config.ElevatorSettings;
-import net.enelson.sopelevators.hook.ACustomBlocksHook;
+import net.enelson.sopelevators.hook.SopCustomBlocksHook;
 import net.enelson.sopelevators.listener.ElevatorListener;
 import net.enelson.sopelevators.service.ElevatorService;
 import org.bukkit.Bukkit;
@@ -11,7 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class SopElevatorsPlugin extends JavaPlugin {
     private ElevatorSettings settings;
-    private ACustomBlocksHook customBlocksHook;
+    private SopCustomBlocksHook customBlocksHook;
     private ElevatorService elevatorService;
 
     @Override
@@ -19,7 +19,7 @@ public final class SopElevatorsPlugin extends JavaPlugin {
         saveDefaultConfig();
 
         this.settings = ElevatorSettings.fromConfig(this);
-        this.customBlocksHook = new ACustomBlocksHook();
+        this.customBlocksHook = new SopCustomBlocksHook();
         this.elevatorService = new ElevatorService(this, settings, customBlocksHook);
 
         PluginManager pluginManager = Bukkit.getPluginManager();
