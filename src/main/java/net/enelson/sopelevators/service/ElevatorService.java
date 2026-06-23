@@ -6,7 +6,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import net.enelson.sopelevators.SopElevatorsPlugin;
 import net.enelson.sopelevators.config.ElevatorSettings;
 import net.enelson.sopelevators.config.ElevatorType;
+import net.enelson.sopelevators.event.ElevatorMoveEvent;
 import net.enelson.sopelevators.hook.SopCustomBlocksHook;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
@@ -67,6 +69,7 @@ public final class ElevatorService {
         plugin.getServer().getScheduler().runTask(plugin, () -> player.setVelocity(new Vector(0.0D, 0.0D, 0.0D)));
         player.playSound(target, Sound.BLOCK_NOTE_BLOCK_PLING, 0.7F, direction > 0 ? 1.35F : 0.85F);
         cooldowns.put(player.getUniqueId(), System.currentTimeMillis());
+        Bukkit.getPluginManager().callEvent(new ElevatorMoveEvent(player, direction > 0 ? "UP" : "DOWN"));
         return true;
     }
 
